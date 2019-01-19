@@ -1,19 +1,38 @@
-# import scales
-
+#' Summarize results for the six UEQ scales
+#'
+#' Creates a dataframe with scale name, mean, variance, standard deviation,
+#' N, confidence, left and right confidence interval, alpha, lambda^2, and
+#' the benchmark comparison.
+#'
+#' @param df dataframe with 26 columns in the order specified in the UEQ documentation
+#'
+#' @return dataframe with 11 columns and one row for each of the six scales
+#'
+#' @examples
+#' ueq_scales()
+#'
+#' @export
 ueq_scales <- function(df) {
-  
+
+  scales <- list(attractiveness = c(1, 12, 14, 16, 24, 25),
+                 perspicuity = c(2, 4, 13, 21),
+                 efficiency = c(9, 20, 22, 23),
+                 dependability = c(8, 11, 17, 19),
+                 stimulation = c(5, 6, 7, 18),
+                 novelty = c(3, 10, 15, 26))
+
   cleaned_df <- clean_ueq(df)
-  
-  scales_list <- list() 
-  for (i in 1:length(scales)) { 
-    scale <- case_when( 
+
+  scales_list <- list()
+  for (i in 1:length(scales)) {
+    scale <- case_when(
       i == 1 ~ "attractiveness",
       i == 2 ~ "perspicuity",
       i == 3 ~ "efficiency",
       i == 4 ~ "dependability",
       i == 5 ~ "stimulation",
       i == 6 ~ "novelty")
-    means <- mean(rowMeans(cleaned_df[unlist(scales[i])])) 
+    means <- mean(rowMeans(cleaned_df[unlist(scales[i])]))
     vars <- var(rowMeans(cleaned_df[unlist(scales[i])]))
     sd <- sd(rowMeans(cleaned_df[unlist(scales[i])]))
     n <- nrow(cleaned_df[unlist(scales[i])])
@@ -23,12 +42,12 @@ ueq_scales <- function(df) {
     alpha <- psych::alpha(cleaned_df[unlist(scales[i])])[["total"]][["std.alpha"]] #nochmal prüfen, da leichte Abweichung zu Exceldatei
     lambda2 <- psych::alpha(cleaned_df[unlist(scales[i])])[["total"]][["G6(smc)"]]
 
-    instance <- data_frame(scale, means, vars, sd, n, confidence, ci_left, ci_right, alpha, lambda2)
+    instance <- tibble(scale, means, vars, sd, n, confidence, ci_left, ci_right, alpha, lambda2)
     scales_list[[i]] <- instance
   }
-  
+
   scales_results <- bind_rows(scales_list)
-  
+
   return(cbind(scales_results, benchmark = ueq_benchmarks(scales_results)))
 }
 
@@ -103,6 +122,6 @@ ueq_benchmarks <- function(scales_results) {
     bm_dep(scales_results$means[4]),
     bm_stim(scales_results$means[5]),
     bm_nov(scales_results$means[6]))
-  
+
   return(benchmark)
 }
