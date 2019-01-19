@@ -4,11 +4,17 @@ Version: 0.0.0.9000
 Authors@R: person("Janik", "Dostert", email = "firstlast@gmail.com", role = c("aut", "cre"))
 Description: Cleans and analyzes a dataframe containing the 26 items of the 
     user experience questionnaire. Different functions for whole analysis,
-    item or scales results are available.
+    items, and scales results are available.
 Depends: R (>= 3.4.3)
-License: What license is it under?
+License: file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
     dplyr,
     stringr,
+    likert,
+    psych
+Suggests: 
+    testthat
+RoxygenNote: 6.1.1
+Data: file data
