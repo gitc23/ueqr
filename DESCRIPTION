@@ -1,0 +1,9 @@
+Package: ueqr
+Title: Analyzes user experience questionnaire data
+Version: 0.0.0.9000
+Authors@R: person("Janik", "Dostert", email = "janikdostert@gmail.com", role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+Depends: R (>= 3.4.3)
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
