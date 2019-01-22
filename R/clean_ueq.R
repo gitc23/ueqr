@@ -7,14 +7,13 @@
 #' for 3 or more scales will be removed.
 #'
 #' @param df dataframe with 26 columns in the order specified in the UEQ documentation
+#' @param ueq_range the range of columns where the 26 UEQ Items are to be found
+#' @param add_vars index of additional variables that should not be dropped
 #'
 #' @return dataframe with 26 columns minus the number of rows where the above pattern was true
 #'
-#' @examples
-#' clean_ueq()
-#'
 #' @export
-clean_ueq <- function(df) {
+clean_ueq <- function(df, ueq_range = c(1:26), add_vars = NULL) {
 
   minus_four <- c(1, 2, 6:8, 11, 13:16, 20, 22, 26)
   four_minus <- c(3:5, 9, 10, 12, 17:19, 21, 23:25)
@@ -26,7 +25,7 @@ clean_ueq <- function(df) {
   stimulation <- c(5, 6, 7, 18)
   novelty <- c(3, 10, 15, 26)
 
-  df_transformed <- data.frame(df[minus_four]-4, 4-df[four_minus]) %>%
+  df_transformed <- data.frame(df[ueq_range][minus_four]-4, 4-df[ueq_range][four_minus]) %>%
     select(c(stringr::str_sort(colnames(.), numeric = TRUE)))
 
   critical_cands <- df_transformed %>%
@@ -38,7 +37,12 @@ clean_ueq <- function(df) {
            novelty = apply(df_transformed[novelty], 1, function(x) max(x)-min(x))) %>%
     select(attractiveness:novelty) %>%
     apply(1, function(x) sum(x > 3))
-  critical <- cbind(df_transformed, critical_cands)
+
+  if (!is.null(add_vars)) {
+    critical <- cbind(df_transformed, df[add_vars], critical_cands)
+  } else {
+    critical <- cbind(df_transformed, critical_cands)
+  }
 
   # removed <- sum(critical$critical_cands >= 3)
   # cat(removed, "critical cases removed.\n")
