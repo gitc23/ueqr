@@ -6,12 +6,11 @@
 #' @param df dataframe with 26 columns in the order specified in the UEQ documentation
 #'
 #' @return dataframe with 9 columns and one row for each of the 26 items
-#'
-#' @examples
-#' ueq_items()
+#' @param is.clean Boolean whether the passed dataframe is already cleaned
+#' @param ueq_range the range of columns where the 26 UEQ Items are to be found
 #'
 #' @export
-ueq_items <- function(df) {
+ueq_items <- function(df, is.clean = FALSE, ueq_range = c(1:26)) {
 
   scales <- list(attractiveness = c(1,12,14,16,24,25),
                  perspicuity = c(2,4,13,21),
@@ -20,7 +19,11 @@ ueq_items <- function(df) {
                  stimulation = c(5,6,7,18),
                  novelty = c(3,10,15,26))
 
-  cleaned_df <- clean_ueq(df)
+  if (!is.clean) {
+    cleaned_df <- clean_ueq(df[ueq_range])
+  } else {
+    cleaned_df <- df
+  }
 
   setNames(
     data.frame(colMeans(cleaned_df),
