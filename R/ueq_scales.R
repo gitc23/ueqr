@@ -5,14 +5,13 @@
 #' the benchmark comparison.
 #'
 #' @param df dataframe with 26 columns in the order specified in the UEQ documentation
+#' @param is.clean Boolean whether the passed dataframe is already cleaned
+#' @param ueq_range the range of columns where the 26 UEQ Items are to be found
 #'
 #' @return dataframe with 11 columns and one row for each of the six scales
 #'
-#' @examples
-#' ueq_scales()
-#'
 #' @export
-ueq_scales <- function(df) {
+ueq_scales <- function(df, is.clean = FALSE, ueq_range = c(1:26)) {
 
   scales <- list(attractiveness = c(1, 12, 14, 16, 24, 25),
                  perspicuity = c(2, 4, 13, 21),
@@ -21,7 +20,11 @@ ueq_scales <- function(df) {
                  stimulation = c(5, 6, 7, 18),
                  novelty = c(3, 10, 15, 26))
 
-  cleaned_df <- clean_ueq(df)
+  if (!is.clean) {
+    cleaned_df <- clean_ueq(df[ueq_range])
+  } else {
+    cleaned_df <- df
+  }
 
   scales_list <- list()
   for (i in 1:length(scales)) {
