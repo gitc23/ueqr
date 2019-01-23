@@ -5,7 +5,7 @@ Authors@R: person("Janik", "Dostert", email = "firstlast@gmail.com", role = c("a
 Description: Cleans and analyzes a dataframe containing the 26 items of the 
     user experience questionnaire. Different functions for whole analysis,
     items, and scales results are available.
-Depends: R (>= 3.4.3)
+Depends: R (>= 3.4.0)
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true
