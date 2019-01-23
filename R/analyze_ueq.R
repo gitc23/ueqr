@@ -6,13 +6,12 @@
 #'
 #' @param is.clean Boolean whether the passed dataframe is already cleaned
 #' @param ueq_range the range of columns where the 26 UEQ Items are to be found
-#' @param add_vars index of additional variables that should not be dropped
 #' @param group_var index of additional variables that should not be dropped
 #'
 #' @import dplyr
 #'
 #' @export
-analyze_ueq <- function(df, is.clean = FALSE, ueq_range = c(1:26), add_vars = NULL, group_var = 27) {
+compare_ueq_scales <- function(df, is.clean = FALSE, ueq_range = c(1:26), group_var = 27) {
 
   scales <- list(attractiveness = c(1,12,14,16,24,25),
                  perspicuity = c(2,4,13,21),
