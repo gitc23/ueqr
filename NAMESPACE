@@ -2,5 +2,7 @@
 
 export(analyze_ueq)
 export(clean_ueq)
+export(ueq_case_scale_means)
 export(ueq_items)
 export(ueq_scales)
+import(dplyr)
