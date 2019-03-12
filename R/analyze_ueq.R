@@ -3,15 +3,18 @@
 #' update
 #'
 #' @param df dataframe with 26 columns in the order specified in the UEQ documentation
-#'
 #' @param is.clean Boolean whether the passed dataframe is already cleaned
 #' @param ueq_range the range of columns where the 26 UEQ Items are to be found
 #' @param group_var index of additional variables that should not be dropped
 #'
+#' @return Mean comparisons
+#'
 #' @import dplyr
+#' @import ggpubr
 #'
 #' @export
-compare_ueq_scales <- function(df, is.clean = FALSE, ueq_range = c(1:26), group_var = 27) {
+#'
+analyze_ueq <- function(df, is.clean = FALSE, ueq_range = c(1:26), group_var = 27) {
 
   scales <- list(attractiveness = c(1,12,14,16,24,25),
                  perspicuity = c(2,4,13,21),
@@ -28,9 +31,8 @@ compare_ueq_scales <- function(df, is.clean = FALSE, ueq_range = c(1:26), group_
     colnames(scale_means)[7] <- c("group")
   }
 
-  ggpubr::compare_means(c(attractiveness, perspicuity, efficiency, dependability, stimulation, novelty)
+  compare_means(c(attractiveness, perspicuity, efficiency, dependability, stimulation, novelty)
                         ~ group, data = scale_means)
-
 }
 
 

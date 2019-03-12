@@ -4,12 +4,15 @@
 #' N, confidence, left and right confidence interval, scale, and item
 #'
 #' @param df dataframe with 26 columns in the order specified in the UEQ documentation
-#'
-#' @return dataframe with 9 columns and one row for each of the 26 items
 #' @param is.clean Boolean whether the passed dataframe is already cleaned
 #' @param ueq_range the range of columns where the 26 UEQ Items are to be found
 #'
+#' @return dataframe with 9 columns and one row for each of the 26 items
+#'
+#' @importFrom stats qnorm qt sd setNames var
+#'
 #' @export
+#'
 ueq_items <- function(df, is.clean = FALSE, ueq_range = c(1:26)) {
 
   scales <- list(attractiveness = c(1,12,14,16,24,25),

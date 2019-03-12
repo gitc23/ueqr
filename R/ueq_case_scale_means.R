@@ -11,6 +11,7 @@
 #' @return dataframe with 26 columns minus the number of rows where the above pattern was true
 #'
 #' @export
+#'
 ueq_case_scale_means <- function(df, is.clean = FALSE, ueq_range = c(1:26), add_vars = NULL) {
 
   scales <- list(attractiveness = c(1,12,14,16,24,25),

@@ -11,6 +11,7 @@
 #' @return dataframe with 11 columns and one row for each of the six scales
 #'
 #' @export
+#'
 ueq_scales <- function(df, is.clean = FALSE, ueq_range = c(1:26)) {
 
   scales <- list(attractiveness = c(1, 12, 14, 16, 24, 25),

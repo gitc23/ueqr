@@ -13,6 +13,7 @@
 #' @return dataframe with 26 columns minus the number of rows where the above pattern was true
 #'
 #' @export
+#'
 clean_ueq <- function(df, ueq_range = c(1:26), add_vars = NULL) {
 
   minus_four <- c(1, 2, 6:8, 11, 13:16, 20, 22, 26)
@@ -43,10 +44,6 @@ clean_ueq <- function(df, ueq_range = c(1:26), add_vars = NULL) {
   } else {
     critical <- cbind(df_transformed, critical_cands)
   }
-
-  # removed <- sum(critical$critical_cands >= 3)
-  # cat(removed, "critical cases removed.\n")
-  # Sys.sleep(0.5)
 
   clean <- critical[!critical$critical_cands >= 3,] %>%
     select(-critical_cands)

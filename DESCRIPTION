@@ -14,7 +14,10 @@ Imports:
     stringr,
     likert,
     psych,
-    ggpubr
+    ggpubr,
+    ggplot2,
+    ggthemes,
+    reshape2
 Suggests: 
     testthat
 RoxygenNote: 6.1.1
