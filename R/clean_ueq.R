@@ -26,6 +26,9 @@ clean_ueq <- function(df, ueq_range = c(1:26), add_vars = NULL) {
   stimulation <- c(5, 6, 7, 18)
   novelty <- c(3, 10, 15, 26)
 
+  tmp_names <- colnames(df)[ueq_range]
+  colnames(df) <- sprintf("X%s", seq(1:26))
+
   df_transformed <- data.frame(df[ueq_range][minus_four]-4, 4-df[ueq_range][four_minus]) %>%
     select(c(stringr::str_sort(colnames(.), numeric = TRUE)))
 
@@ -47,6 +50,8 @@ clean_ueq <- function(df, ueq_range = c(1:26), add_vars = NULL) {
 
   clean <- critical[!critical$critical_cands >= 3,] %>%
     select(-critical_cands)
+
+  colnames(clean) <- tmp_names
 
   return(clean)
 }
