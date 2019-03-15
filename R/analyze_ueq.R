@@ -24,10 +24,12 @@ analyze_ueq <- function(df, is.clean = FALSE, ueq_range = c(1:26), group_var = 2
                  novelty = c(3,10,15,26))
 
   if (!is.clean) {
-    scale_means <- ueq_case_scale_means(df, is.clean = FALSE, ueq_range = ueq_range, add_vars = group_var)
+    scale_means <- ueq_case_scale_means(df, is.clean = FALSE, ueq_range = ueq_range, add_vars = (last(ueq_range) + 1):group_var) %>%
+      select(1:6, ncol(.))
     colnames(scale_means)[7] <- c("group")
   } else {
-    scale_means <- ueq_case_scale_means(df, is.clean = TRUE, ueq_range = ueq_range, add_vars = group_var)
+    scale_means <- ueq_case_scale_means(df, is.clean = TRUE, ueq_range = ueq_range, add_vars = (last(ueq_range) + 1):group_var) %>%
+      select(1:6, ncol(.))
     colnames(scale_means)[7] <- c("group")
   }
 

@@ -43,7 +43,7 @@ ueq_scales <- function(df, is.clean = FALSE, ueq_range = c(1:26)) {
     confidence <- qnorm(0.975)*sd/sqrt(n)
     ci_left <-  means - confidence
     ci_right <-  means + confidence
-    alpha <- psych::alpha(cleaned_df[unlist(scales[i])])[["total"]][["std.alpha"]] #nochmal prüfen, da leichte Abweichung zu Exceldatei
+    alpha <- psych::alpha(cleaned_df[unlist(scales[i])])[["total"]][["std.alpha"]]
     lambda2 <- psych::alpha(cleaned_df[unlist(scales[i])])[["total"]][["G6(smc)"]]
 
     instance <- tibble(scale, means, vars, sd, n, confidence, ci_left, ci_right, alpha, lambda2)
