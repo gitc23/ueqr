@@ -17,8 +17,8 @@ devtools::install_github("gitc23/ueqr")
 ## How to use
 Functions work out of the box with just a dataframe supplied. Column names MUST conform to the order of items in the original questionnaire.
 
+### Analyse scales in a supplied range
 ```
-# analyse scales of a raw UEQ export
 ueq_scales(sample_items, is.clean = FALSE, ueq_range = c(1:26))
 
            scale     means      vars        sd   n confidence   ci_left  ci_right     alpha   lambda2     benchmark
@@ -28,9 +28,10 @@ ueq_scales(sample_items, is.clean = FALSE, ueq_range = c(1:26))
 4  dependability 1.2731092 0.7689785 0.8769142 238  0.1114081 1.1617012 1.3845173 0.5990847 0.6082850 Above Average
 5    stimulation 1.1838235 1.1161191 1.0564654 238  0.1342193 1.0496043 1.3180428 0.8272948 0.8071646 Above Average
 6        novelty 0.8266807 1.1140847 1.0555021 238  0.1340969 0.6925838 0.9607776 0.7155509 0.6715016 Above Average
+```
 
-
-# compare means of two groups by supplying the column index of the grouping variable
+### Compare means of two groups by supplying the column index of the grouping variable
+```
 analyze_ueq(sample_items, is.clean = FALSE, ueq_range = c(1:26), group_var = 27)
 
 # A tibble: 18 x 8
