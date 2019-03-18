@@ -13,3 +13,19 @@ Analyses items and scales of the the User Experience Questionnaire as described 
 ```
 devtools::install_github("gitc23/ueqr")
 ```
+
+## How to use
+Functions work out of the box with just a dataframe supplied. Column names MUST conform to the order of items in the original questionnaire.
+
+```
+# analyse scales of a raw UEQ export
+ueq_scales(sample_items, is.clean = FALSE, ueq_range = c(1:26))
+
+           scale     means      vars        sd   n confidence   ci_left  ci_right     alpha   lambda2     benchmark
+1 attractiveness 1.5077031 1.2609578 1.1229238 238  0.1426625 1.3650406 1.6503656 0.9144399 0.9097830 Above Average
+2    perspicuity 1.7121849 1.2148087 1.1021836 238  0.1400276 1.5721573 1.8522124 0.8345766 0.7958659          Good
+3     efficiency 1.6344538 1.1184493 1.0575676 238  0.1343593 1.5000945 1.7688131 0.8248765 0.7948633          Good
+4  dependability 1.2731092 0.7689785 0.8769142 238  0.1114081 1.1617012 1.3845173 0.5990847 0.6082850 Above Average
+5    stimulation 1.1838235 1.1161191 1.0564654 238  0.1342193 1.0496043 1.3180428 0.8272948 0.8071646 Above Average
+6        novelty 0.8266807 1.1140847 1.0555021 238  0.1340969 0.6925838 0.9607776 0.7155509 0.6715016 Above Average
+```
