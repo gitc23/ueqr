@@ -4,7 +4,7 @@
 #'
 #' @docType data
 #'
-#' @usage data(grav)
+#' @usage data(sample_items)
 #'
 #' @format An object of class \code{"cross"}; see \code{\link[qtl]{read.cross}}.
 #'
