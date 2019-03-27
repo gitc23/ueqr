@@ -37,5 +37,3 @@ analyze_ueq <- function(df, is.clean = FALSE, ueq_range = c(1:26), group_var = 2
                         ~ group, data = scale_means)
 }
 
-
-
