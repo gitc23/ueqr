@@ -129,11 +129,3 @@ ueq_benchmarks <- function(scales_results) {
 
   return(benchmark)
 }
-
-
-#' Sample data to be included for demonstration purposes
-#'
-#' Item values come from the authors' analysis tool found on the UEQ website
-
-#' @references \url{https://www.ueq-online.org}
-"sample_items"
