@@ -4,7 +4,7 @@
 \name{sample_items}
 \alias{sample_items}
 \title{UEQ sample data}
-\format{An object of class \code{"cross"}; see \code{\link[qtl]{read.cross}}.}
+\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 255 rows and 28 columns.}
 \source{
 \href{https://www.ueq-online.org}{UEQ Online}
 }

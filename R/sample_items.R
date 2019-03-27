@@ -6,8 +6,6 @@
 #'
 #' @usage data(sample_items)
 #'
-#' @format An object of class \code{"cross"}; see \code{\link[qtl]{read.cross}}.
-#'
 #' @keywords datasets
 #'
 #' @source \href{https://www.ueq-online.org}{UEQ Online}
