@@ -37,7 +37,7 @@ ueq_case_scale_means <- function(df, is.clean = FALSE, ueq_range = c(1:26), add_
     select(attractiveness, perspicuity, efficiency, dependability, stimulation, novelty)
 
   if (!is.null(add_vars)) {
-    case_scale_means <- cbind(scale_means, cleaned_df[add_vars])
+    case_scale_means <- cbind(scale_means, cleaned_df[add_vars-(first(ueq_range)-1)])
   } else {
     case_scale_means <- scale_means
   }
