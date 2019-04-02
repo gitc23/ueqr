@@ -1,6 +1,6 @@
 Package: ueqr
 Title: Analyzes user experience questionnaire data
-Version: 0.0.1.0000
+Version: 0.0.2.0000
 Authors@R: person("Janik", "Dostert", email = "firstlast@gmail.com", role = c("aut", "cre"))
 Description: Cleans and analyzes a dataframe containing the 26 items of the 
     user experience questionnaire. Different functions for whole analysis,
