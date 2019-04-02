@@ -51,7 +51,7 @@ clean_ueq <- function(df, ueq_range = c(1:26), add_vars = NULL) {
   clean <- critical[!critical$critical_cands >= 3,] %>%
     select(-critical_cands)
 
-  colnames(clean[1:26]) <- tmp_names
+  colnames(clean)[1:26] <- tmp_names
 
   return(clean)
 }
